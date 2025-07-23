@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sort Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Orbitron:900" rel="stylesheet">
+</head>
+<body>
+<canvas class="stars"></canvas>
+<div class="sortwars-title">Sort Wars</div>
+<div class="controls">
+    <label for="sortChoice" style="font-size:1.1rem;">Sort by:</label>
+    <select id="sortChoice">
+        <option value="1">Title</option>
+        <option value="2">Director</option>
+        <option value="3">Release Date</option>
+        <option value="4">Rating</option>
+    </select>
+    <button class="galactic-btn" onclick="shuffleSelected()">SHUFFLE</button>
+    <button class="galactic-btn" onclick="runSorts()">SORT</button>
+</div>
+
+<div class="selection-panel" id="selectionPanel">
+    <div class="select-header">Select Movies to Sort</div>
+    <form id="movieSelectForm" onsubmit="event.preventDefault()">
+        <div class="select-list" id="movieSelectList"></div>
+        <div class="select-actions">
+            <button class="galactic-btn" type="button" onclick="selectAll(true)">Select All</button>
+            <button class="galactic-btn" type="button" onclick="selectAll(false)">Deselect All</button>
+        </div>
+    </form>
+</div>
+
+<div class="display-selected" id="displaySelectedBox" style="display:none">
+    <div class="display-selected-title">
+        Selected Movies
+        <span style="font-size:0.85rem; font-family:monospace; color:#fffde3; margin-left:14px;" id="selectedCount"></span>
+    </div>
+    <div id="selectedMovieTable"></div>
+</div>
+
+<div class="result-row" id="sortResultRow" style="display:none;">
+    <div class="sort-panel jedi-side" id="bubble-panel">
+        <div class="panel-title">
+            Bubble Sort<br>
+            <span class="complexity">
+                Time: O(n²) &nbsp;|&nbsp; Space: O(1)
+            </span>
+        </div>
+        <div class="stats" id="bubbleStats"></div>
+        <div id="bubbleTable"></div>
+    </div>
+    <div class="sort-panel sith-side" id="merge-panel">
+        <div class="panel-title">
+            Merge Sort<br>
+            <span class="complexity">
+                Time: O(n log n) &nbsp;|&nbsp; Space: O(n)
+            </span>
+        </div>
+        <div class="stats" id="mergeStats"></div>
+        <div id="mergeTable"></div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
