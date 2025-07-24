@@ -28,6 +28,21 @@
         <div class="select-actions">
             <button class="galactic-btn" type="button" onclick="selectAll(true)">Select All</button>
             <button class="galactic-btn" type="button" onclick="selectAll(false)">Deselect All</button>
+            <button class="galactic-btn" type="button" onclick="showAddMovieForm()" style="margin-left:14px;background:#191919;color:#ffe81f;border:2px solid #ffe81f;">
+                + Add Custom Movie
+            </button>
+        </div>
+        <div id="addMovieForm" style="display:none; margin-top:17px; padding:15px; border-radius:10px; background:#232323;">
+            <div style="font-family:'Star Wars', 'Orbitron', sans-serif; color:#ffe81f; font-size:1.05rem; margin-bottom:9px;">
+                Add Custom Movie
+            </div>
+            <label>Title: <input type="text" id="customTitle" required style="margin:0 7px 7px 0;"></label>
+            <label>Director: <input type="text" id="customDirector" required style="margin:0 7px 7px 0;"></label>
+            <label>Release Date: <input type="date" id="customDate" required style="margin:0 7px 7px 0;"></label>
+            <label>Rating: <input type="number" id="customRating" min="0" max="10" step="0.1" required style="width:65px; margin:0 7px 7px 0;"></label>
+            <button class="galactic-btn" type="button" onclick="addCustomMovie()">Add</button>
+            <button class="galactic-btn" type="button" onclick="hideAddMovieForm()" style="background:#222;color:#ffe81f;border:1px solid #ffe81f;">Cancel</button>
+            <span id="addMovieError" style="color:#ff3c28;font-size:1rem;margin-left:12px;"></span>
         </div>
     </form>
 </div>
