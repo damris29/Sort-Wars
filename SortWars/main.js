@@ -103,6 +103,56 @@ const movieList = [
 let selectedIndexes = [];
 let selectedMovies = [];
 
+// --- CUSTOM MOVIE ADDITION ---
+function showAddMovieForm() {
+    document.getElementById('addMovieForm').style.display = '';
+    document.getElementById('addMovieError').textContent = '';
+}
+function hideAddMovieForm() {
+    document.getElementById('addMovieForm').style.display = 'none';
+    document.getElementById('addMovieError').textContent = '';
+    document.getElementById('customTitle').value = '';
+    document.getElementById('customDirector').value = '';
+    document.getElementById('customDate').value = '';
+    document.getElementById('customRating').value = '';
+}
+
+function addCustomMovie() {
+    const title = document.getElementById('customTitle').value.trim();
+    const director = document.getElementById('customDirector').value.trim();
+    const dateReleased = document.getElementById('customDate').value;
+    const ratingStr = document.getElementById('customRating').value;
+
+    // Validate
+    if (!title || !director || !dateReleased || !ratingStr) {
+        document.getElementById('addMovieError').textContent = "All fields are required.";
+        return;
+    }
+    const rating = parseFloat(ratingStr);
+    if (isNaN(rating) || rating < 0 || rating > 10) {
+        document.getElementById('addMovieError').textContent = "Rating must be between 0 and 10.";
+        return;
+    }
+    // Check for duplicate movie (by title + director)
+    if (movieList.some(m => m.title.toLowerCase() === title.toLowerCase() && m.director.toLowerCase() === director.toLowerCase())) {
+        document.getElementById('addMovieError').textContent = "This movie already exists.";
+        return;
+    }
+    // Add movie
+    movieList.push({
+        title: title,
+        director: director,
+        dateReleased: dateReleased,
+        rating: rating
+    });
+    // Select the newly added one
+    selectedIndexes.push(movieList.length - 1);
+
+    hideAddMovieForm();
+    renderMovieSelection();
+    updateSelectedDisplay();
+}
+
 function renderMovieSelection() {
     const container = document.getElementById('movieSelectList');
     container.innerHTML = '';
