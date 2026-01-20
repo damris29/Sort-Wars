@@ -31,6 +31,6 @@ You can select the sorting algorithm and the property to sort by from the app’
 Contributions are welcome!  
 Feel free to open issues or submit pull requests to improve the app.
 
----
+-------
 
 Enjoy learning about sorting algorithms with **Sort-Wars**!
